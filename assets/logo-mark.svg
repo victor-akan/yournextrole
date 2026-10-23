@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="yournextrole.fit">
+  <rect width="64" height="64" rx="16" fill="#14532d"/>
+  <path d="M20 44 L42 22" stroke="#fff" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M27 21 H43 V37" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="19" cy="45" r="6" fill="#f0b27a" stroke="#14532d" stroke-width="2.5"/>
+</svg>
