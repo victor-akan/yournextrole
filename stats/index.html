@@ -1,0 +1,381 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>yournextrole.fit · Visitors</title>
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbf7f1; --card: #ffffff; --ink: #1c1a17; --ink-2: #4b463f; --ink-3: #847c70; --line: #e8dfd1; --soft: #f4ede2;
+    --green: #14532d; --green-2: #1f7a45; --green-soft: #e3f1e7; --terra: #c2410c; --terra-soft: #fbe7da; --peach: #f0b27a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { width: min(1180px, 100% - 32px); margin: 0 auto; padding: 22px 0 60px; }
+  header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; margin-bottom: 16px; }
+  .brand { font: 700 22px Fraunces, Georgia, serif; letter-spacing: -.02em; display: flex; align-items: center; gap: 10px; }
+  .brand em { font-style: normal; color: var(--terra); }
+  .brand small { font: 500 13px Inter, sans-serif; color: var(--ink-3); letter-spacing: 0; }
+  .upd { font-size: 12.5px; color: var(--ink-3); } .upd a { color: var(--green); font-weight: 600; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; margin-bottom: 18px; position: sticky; top: 0; z-index: 5; }
+  .seg { display: inline-flex; background: var(--soft); border-radius: 10px; padding: 3px; flex-wrap: wrap; }
+  .seg button { font: 600 13px Inter, sans-serif; border: 0; background: transparent; color: var(--ink-2); padding: 6px 11px; border-radius: 8px; cursor: pointer; }
+  .seg button.on { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(60,40,10,.15); }
+  select { font: 600 13px Inter, sans-serif; color: var(--ink-2); background: var(--soft); border: 0; border-radius: 10px; padding: 8px 10px; }
+  .fl { font-size: 12px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; margin-right: -6px; }
+
+  .alert { background: #fbf0d9; border: 1px solid #f2d79c; color: #7a5114; border-radius: 14px; padding: 14px 16px; margin-bottom: 14px; font-size: 14px; }
+  .alert b { color: #5c3d0c; } .alert table { margin-top: 10px; background: #fff; border-radius: 10px; } .alert td, .alert th { color: #4b463f; }
+  .kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 18px; }
+  .kpi { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+  .kpi b { display: block; font: 700 30px/1.1 Fraunces, Georgia, serif; }
+  .kpi span { font-size: 13px; color: var(--ink-2); } .kpi small { display: block; font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+  .kpi.hero { background: var(--green); border-color: var(--green); color: #fff; } .kpi.hero span, .kpi.hero small { color: #cfe8d6; }
+
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; min-width: 0; }
+  .c12 { grid-column: span 12; } .c8 { grid-column: span 8; } .c7 { grid-column: span 7; } .c6 { grid-column: span 6; } .c5 { grid-column: span 5; } .c4 { grid-column: span 4; }
+  h2 { font: 600 18px Fraunces, Georgia, serif; margin: 0 0 2px; } .sub { font-size: 13px; color: var(--ink-3); margin: 0 0 14px; }
+
+  /* horizontal bars */
+  .bars { display: grid; gap: 9px; }
+  .bar { display: grid; grid-template-columns: minmax(110px, 34%) 1fr 92px; gap: 10px; align-items: center; font-size: 13.5px; }
+  .bar .lab { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bar .track { height: 14px; background: var(--soft); border-radius: 4px; position: relative; }
+  .bar .fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; background: var(--green-2); min-width: 2px; }
+  .bar .val { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; }
+  .bar .val small { color: var(--ink-3); font-weight: 500; }
+  .bars.alt .fill { background: var(--peach); } .bars.terra .fill { background: var(--terra); }
+
+  /* funnel */
+  .funnel { display: grid; gap: 10px; }
+  .step { display: grid; grid-template-columns: 190px 1fr 120px; gap: 12px; align-items: center; }
+  .step .lab b { display: block; font-size: 14.5px; } .step .lab span { font-size: 12px; color: var(--ink-3); }
+  .step .track { height: 30px; background: var(--soft); border-radius: 6px; position: relative; }
+  .step .fill { position: absolute; inset: 0 auto 0 0; background: var(--green); border-radius: 6px; min-width: 3px; }
+  .step:last-child .fill { background: var(--terra); }
+  .step .val { text-align: right; } .step .val b { font: 700 20px Fraunces, serif; } .step .val small { display: block; font-size: 12px; color: var(--ink-3); }
+  .drop { font-size: 12px; color: var(--terra); font-weight: 600; margin: -4px 0 0 202px; }
+
+  /* daily chart */
+  .chart { position: relative; }
+  .chart svg { display: block; width: 100%; height: 190px; overflow: visible; }
+  .legend { display: flex; gap: 16px; font-size: 12.5px; color: var(--ink-2); margin-bottom: 8px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .tip { position: absolute; pointer-events: none; background: var(--ink); color: #fff; font-size: 12px; padding: 6px 9px; border-radius: 8px; white-space: nowrap; transform: translate(-50%, -110%); display: none; z-index: 3; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-weight: 600; color: var(--ink-3); font-size: 12px; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  td { padding: 8px; border-bottom: 1px solid var(--soft); color: var(--ink-2); white-space: nowrap; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+  .pill { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+  .p-sent { background: var(--terra-soft); color: var(--terra); } .p-start { background: #fbf0d9; color: #8a5a12; } .p-form { background: var(--green-soft); color: var(--green); } .p-read { background: var(--soft); color: var(--ink-2); }
+  .empty { color: var(--ink-3); font-size: 13.5px; padding: 8px 0; }
+  .note { font-size: 12.5px; color: var(--ink-3); margin-top: 10px; }
+
+  @media (max-width: 980px) {
+    .kpis { grid-template-columns: repeat(3, 1fr); }
+    .c8, .c7, .c6, .c5, .c4 { grid-column: span 12; }
+  }
+  @media (max-width: 560px) {
+    .kpis { grid-template-columns: repeat(2, 1fr); } .kpi b { font-size: 25px; }
+    .step { grid-template-columns: 1fr 96px; } .step .track { grid-column: 1 / -1; grid-row: 2; height: 22px; } .drop { margin-left: 0; }
+    .bar { grid-template-columns: 1fr 80px; } .bar .track { grid-column: 1 / -1; grid-row: 2; }
+    .filters { position: static; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><span>yournextrole<em>.fit</em></span><small>Visitors &amp; signups</small></div>
+    <div class="upd" id="upd"></div>
+  </header>
+
+  <div id="alert"></div>
+  <div class="filters">
+    <span class="fl">Period</span>
+    <div class="seg" id="f-period">
+      <button data-v="today">Today</button><button data-v="yesterday">Yesterday</button><button data-v="7" class="on">7 days</button><button data-v="30">30 days</button><button data-v="all">All time</button>
+    </div>
+    <span class="fl">Page</span>
+    <select id="f-page"><option value="">All pages</option><option value="apply">/apply (ads)</option><option value="main">Main page</option></select>
+    <span class="fl">Device</span>
+    <select id="f-device"><option value="">All devices</option><option value="mobile">Phone</option><option value="desktop">Computer</option></select>
+    <span class="fl">Source</span>
+    <select id="f-src"><option value="">All sources</option></select>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="grid">
+    <div class="card c7">
+      <h2>From visit to signup</h2>
+      <p class="sub">Unique people at each step, and how many you lose between steps.</p>
+      <div class="funnel" id="funnel"></div>
+    </div>
+    <div class="card c5">
+      <h2>Visitors and signups by day</h2>
+      <p class="sub">Unique visitors per day, with how many of them signed up.</p>
+      <div class="legend"><span><i style="background:#cfe0d4"></i>Visitors</span><span><i style="background:var(--terra)"></i>Signed up</span></div>
+      <div class="chart" id="daily"><div class="tip" id="tip"></div></div>
+    </div>
+
+    <div class="card c4">
+      <h2>How far people scroll</h2>
+      <p class="sub">Share of visits reaching each depth.</p>
+      <div class="bars" id="scroll"></div>
+    </div>
+    <div class="card c4">
+      <h2>What they read</h2>
+      <p class="sub">Share of visits that saw each section, top to bottom.</p>
+      <div class="bars alt" id="sections"></div>
+    </div>
+    <div class="card c4">
+      <h2>Where the form loses people</h2>
+      <p class="sub">Visits that started the form but didn't send it: the last box they touched.</p>
+      <div class="bars terra" id="dropfield"></div>
+      <p class="sub" style="margin:16px 0 8px">Form errors shown</p>
+      <div class="bars terra" id="errors"></div>
+    </div>
+
+    <div class="card c6">
+      <h2>Where visitors come from</h2>
+      <p class="sub">Ad source (utm_source), or the site that sent them.</p>
+      <div class="scroll"><table id="sources"></table></div>
+    </div>
+    <div class="card c6">
+      <h2>What they click</h2>
+      <p class="sub">Share of visits that clicked each button or question.</p>
+      <div class="bars" id="clicks"></div>
+    </div>
+
+    <div class="card c6">
+      <h2>Phone vs computer</h2>
+      <p class="sub">Unique visitors and how many signed up.</p>
+      <div class="scroll"><table id="devices"></table></div>
+    </div>
+    <div class="card c6">
+      <h2>Ad campaigns</h2>
+      <p class="sub">From utm_campaign in your ad links.</p>
+      <div class="scroll"><table id="campaigns"></table></div>
+    </div>
+
+    <div class="card c12">
+      <h2>Latest visits</h2>
+      <p class="sub">Most recent 40 visits. Anonymous: no names or contact details are tracked.</p>
+      <div class="scroll"><table id="recent"></table></div>
+    </div>
+  </div>
+  <p class="note">Signups in your Sheet can be higher than "Sent the form" here: ad blockers and some privacy settings stop the visit tracker, never the form. Your Sheet is the true count of leads.</p>
+</div>
+
+<script type="module">
+/* Private dashboard. Open as yournextrole.fit/stats/#key=YOUR_KEY (the key never leaves your browser except to your own script).
+   Reads the numbers from the leads script (?view=data), which keeps working even when Google blocks the script's own page. */
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbz2VhfZyCAwEZK7dEF_0TFj91M2gdpabuZATAwX5ZThCTcrt5H9A8ZPxbl5cfO35DsjfQ/exec';
+let key = new URLSearchParams(location.hash.slice(1)).get('key') || '';
+try { if (key) localStorage.setItem('ynr_dash_key', key); else key = localStorage.getItem('ynr_dash_key') || ''; } catch (x) {}
+const fail = (msg) => { document.getElementById('kpis').innerHTML = `<div class="card" style="grid-column:1/-1;padding:18px">${msg}</div>`; throw new Error(msg); };
+if (!key) fail('Open this page with your private link (it ends in #key=…).');
+document.getElementById('kpis').innerHTML = '<div class="card" style="grid-column:1/-1;padding:18px">Loading your numbers…</div>';
+let DATA, text = '';
+try {
+  const r = await fetch(`${ENDPOINT}?view=data&key=${encodeURIComponent(key)}&t=${Date.now()}`);
+  text = (await r.text()).trim();
+  DATA = JSON.parse(text);
+} catch (x) {}
+if (!DATA) fail(text === 'Not found.' ? 'That key is not right. Use the private link exactly as sent.' : 'Could not load the numbers. Check your connection and reload.');
+const SECTION_ORDER = [['top', 'Top of page'], ['services', 'Services'], ['how_we_reach', 'How we reach people'], ['consistency', 'Consistency gap'],
+  ['roles', "Who it's for"], ['about_victor', 'About you (Victor)'], ['faq', 'Questions'], ['closing', 'Closing'],
+  ['letter', 'The letter (old page)'], ['difference', 'The difference (old page)'], ['what_you_get', 'What you get (old page)'], ['how_it_works', 'How it works (old page)'],
+  ['promises', 'Promises (old page)'], ['price', 'Price (old page)']];
+const FIELD_NAMES = { name: 'First name', country_code: 'Country code', phone: 'WhatsApp number', email: 'Email', what_you_do: 'What do you do', other: '"Other" box', services: 'Help with (services)' };
+const CLICK_NAMES = { whatsapp_bubble: 'WhatsApp bubble', whatsapp_after_signup: 'WhatsApp after signup', linkedin: 'LinkedIn button', linkedin_footer: 'LinkedIn (footer)',
+  linkedin_form: 'LinkedIn (under the form)', linkedin_form_top: 'LinkedIn (form header)', nav_talk_to_me: '"Talk to me" (top)', nav_logo: 'Logo (top)', sticky_button: 'Sticky button (phone)', price_button: 'Price button', closing_button: 'Closing button', cv_before_after: 'CV before/after', nav_name: 'Name at top' };
+
+const state = { period: '7', page: '', device: '', src: '' };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const pct = (a, b) => (b ? Math.round(a / b * 100) : 0);
+const num = (n) => n.toLocaleString();
+const sourceOf = (s) => s.src || (s.ref ? s.ref.replace(/^www\.|^l\.|^lm\.|^m\./, '') : 'Direct / unknown');
+const dayKey = (t) => { const d = new Date(t); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+const isApply = (p) => /\/apply/.test(p);
+
+function range() {
+  const now = new Date(), start = new Date(now); start.setHours(0, 0, 0, 0);
+  if (state.period === 'today') return [start.getTime(), Infinity];
+  if (state.period === 'yesterday') return [start.getTime() - 864e5, start.getTime()];
+  if (state.period === 'all') return [0, Infinity];
+  return [start.getTime() - (Number(state.period) - 1) * 864e5, Infinity];
+}
+function filtered() {
+  const [a, b] = range();
+  const sessions = DATA.sessions.filter((s) => s.t >= a && s.t < b
+    && (!state.page || (state.page === 'apply') === isApply(s.p))
+    && (!state.device || s.d === state.device)
+    && (!state.src || sourceOf(s) === state.src));
+  const leads = DATA.leads.filter((l) => l.t >= a && l.t < b
+    && (!state.page || (state.page === 'apply') === isApply(l.p))
+    && (!state.src || (l.u.match(/utm_source=([^&]+)/) || [])[1] === state.src));
+  return { sessions, leads };
+}
+
+/** One row per person: did they reach each step in any of their visits? */
+function people(sessions) {
+  const by = {};
+  sessions.forEach((s) => {
+    const p = by[s.v] || (by[s.v] = { v: s.v, visits: 0, engaged: false, form: false, started: false, tried: false, sent: false, d: s.d, src: sourceOf(s), c: s.c, first: s.t });
+    p.visits++;
+    p.engaged = p.engaged || s.sc >= 50 || s.s >= 30;
+    p.form = p.form || s.fs; p.started = p.started || s.st; p.tried = p.tried || s.a > 0; p.sent = p.sent || s.ok;
+  });
+  return Object.values(by);
+}
+
+function bars(el, rows, total, opts = {}) {
+  if (!rows.length || !total) { el.innerHTML = `<div class="empty">${opts.empty || 'Nothing yet for this filter.'}</div>`; return; }
+  const max = opts.max || Math.max(...rows.map((r) => r[1]));
+  el.innerHTML = rows.map(([label, n]) => `<div class="bar" title="${esc(label)}: ${num(n)} (${pct(n, total)}%)">
+    <div class="lab">${esc(label)}</div><div class="track"><div class="fill" style="width:${max ? n / max * 100 : 0}%"></div></div>
+    <div class="val">${opts.count ? num(n) : pct(n, total) + '%'} <small>${opts.count ? '' : num(n)}</small></div></div>`).join('');
+}
+function table(el, head, rows, empty) {
+  if (!rows.length) { el.innerHTML = `<tr><td class="empty">${empty || 'Nothing yet for this filter.'}</td></tr>`; return; }
+  el.innerHTML = '<tr>' + head.map((h, i) => `<th class="${i ? 'n' : ''}">${h}</th>`).join('') + '</tr>'
+    + rows.map((r) => '<tr>' + r.map((c, i) => `<td class="${i ? 'n' : ''}">${c}</td>`).join('') + '</tr>').join('');
+}
+const median = (xs) => { if (!xs.length) return 0; const a = xs.slice().sort((x, y) => x - y), m = a.length >> 1; return a.length % 2 ? a[m] : Math.round((a[m - 1] + a[m]) / 2); };
+const dur = (s) => (s < 60 ? s + 's' : Math.floor(s / 60) + 'm ' + String(s % 60).padStart(2, '0') + 's');
+
+function render() {
+  const { sessions, leads } = filtered();
+  const ppl = people(sessions);
+  const P = ppl.length, sent = ppl.filter((p) => p.sent).length;
+
+  // KPIs
+  const k = [
+    ['hero', num(P), 'Unique visitors', num(sessions.length) + ' visits'],
+    ['', num(ppl.filter((p) => p.started).length), 'Started the form', pct(ppl.filter((p) => p.started).length, P) + '% of visitors'],
+    ['', num(sent), 'Sent the form', pct(sent, P) + '% conversion'],
+    ['', num(leads.length), 'Leads in your Sheet', 'the true lead count'],
+    ['', dur(median(sessions.map((s) => s.s))), 'Typical time on page', 'median per visit'],
+    ['', pct(ppl.filter((p) => p.visits > 1 || sessions.some((s) => s.v === p.v && s.ret)).length, P) + '%', 'Came back', 'returning visitors'],
+  ];
+  document.getElementById('kpis').innerHTML = k.map(([c, b, s, sm]) => `<div class="kpi ${c}"><b>${b}</b><span>${s}</span><small>${sm}</small></div>`).join('');
+
+  // funnel
+  const steps = [
+    ['Entered the page', 'everyone', P],
+    ['Engaged', 'read half the page or stayed 30s+', ppl.filter((p) => p.engaged).length],
+    ['Saw the form', 'the form was on screen', ppl.filter((p) => p.form).length],
+    ['Started the form', 'touched any box', ppl.filter((p) => p.started).length],
+    ['Pressed send', 'tried at least once', ppl.filter((p) => p.tried).length],
+    ['Sent the form', 'became a lead', sent],
+  ];
+  document.getElementById('funnel').innerHTML = P ? steps.map(([l, d, n], i) => {
+    const lost = i ? steps[i - 1][2] - n : 0;
+    return (i && lost > 0 ? `<div class="drop">▼ ${num(lost)} lost (${pct(lost, steps[i - 1][2])}%)</div>` : '')
+      + `<div class="step" title="${l}: ${num(n)} of ${num(P)} visitors"><div class="lab"><b>${l}</b><span>${d}</span></div>
+         <div class="track"><div class="fill" style="width:${pct(n, P)}%"></div></div><div class="val"><b>${num(n)}</b><small>${pct(n, P)}% of visitors</small></div></div>`;
+  }).join('') : '<div class="empty">No visits yet for this filter. Share your link and check back.</div>';
+
+  // daily
+  daily(sessions);
+
+  // scroll + sections
+  const V = sessions.length;
+  bars(document.getElementById('scroll'), [['A quarter', 25], ['Half', 50], ['Three quarters', 75], ['The bottom', 95]]
+    .map(([l, d]) => [l, sessions.filter((s) => s.sc >= d).length]), V, { max: V });
+  bars(document.getElementById('sections'), SECTION_ORDER.map(([id, l]) => [l, sessions.filter((s) => s.sec.includes(id)).length]).filter(([l, n]) => n || !/old page/.test(l)), V, { max: V });
+
+  // form drop-off
+  const abandoned = sessions.filter((s) => s.st && !s.ok);
+  const lf = {}; abandoned.forEach((s) => { const n = FIELD_NAMES[s.lf] || s.lf || 'unknown'; lf[n] = (lf[n] || 0) + 1; });
+  bars(document.getElementById('dropfield'), Object.entries(lf).sort((a, b) => b[1] - a[1]), abandoned.length, { empty: 'Nobody has left the form half-filled.' });
+  const er = {}; sessions.forEach((s) => s.er.forEach((e) => { er[e] = (er[e] || 0) + 1; }));
+  bars(document.getElementById('errors'), Object.entries(er).sort((a, b) => b[1] - a[1]).map(([e, n]) => ['Missing ' + e, n]), 1, { count: true, empty: 'No form errors.' });
+
+  // clicks
+  const cl = {}; sessions.forEach((s) => s.cl.forEach((c) => { const n = CLICK_NAMES[c] || c.replace(/^faq: /, 'Question: '); cl[n] = (cl[n] || 0) + 1; }));
+  bars(document.getElementById('clicks'), Object.entries(cl).sort((a, b) => b[1] - a[1]).slice(0, 14), V, { max: V, empty: 'No clicks yet.' });
+
+  // sources, devices, campaigns
+  const group = (key) => { const g = {}; ppl.forEach((p) => { const k = key(p) || '(none)'; const r = g[k] || (g[k] = [0, 0, 0]); r[0]++; if (p.started) r[1]++; if (p.sent) r[2]++; }); return Object.entries(g).sort((a, b) => b[1][0] - a[1][0]); };
+  const rowsOf = (g) => g.map(([k, [v, st, se]]) => [esc(k), num(v), num(st), num(se), pct(se, v) + '%']);
+  table(document.getElementById('sources'), ['Source', 'Visitors', 'Started', 'Sent', 'Conversion'], rowsOf(group((p) => p.src)));
+  table(document.getElementById('devices'), ['Device', 'Visitors', 'Started', 'Sent', 'Conversion'], rowsOf(group((p) => (p.d === 'mobile' ? 'Phone' : 'Computer'))));
+  table(document.getElementById('campaigns'), ['Campaign', 'Visitors', 'Started', 'Sent', 'Conversion'], rowsOf(group((p) => p.c).filter(([k]) => k !== '(none)')),
+    'No campaign names yet. Add &utm_campaign=<name> to each ad link.');
+
+  // recent
+  const stage = (s) => (s.ok ? '<span class="pill p-sent">Signed up</span>' : s.st ? '<span class="pill p-start">Started form</span>' : s.fs ? '<span class="pill p-form">Saw form</span>' : '<span class="pill p-read">Browsed</span>');
+  const when = (t) => new Date(t).toLocaleString([], { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  table(document.getElementById('recent'), ['When', 'Furthest', 'Page', 'Source', 'Device', 'Time', 'Scrolled'],
+    sessions.slice().sort((a, b) => b.t - a.t).slice(0, 40).map((s) => [when(s.t), stage(s), isApply(s.p) ? '/apply' : 'Main', esc(sourceOf(s)), s.d === 'mobile' ? 'Phone' : 'Computer', dur(s.s), s.sc + '%']));
+}
+
+function daily(sessions) {
+  const box = document.getElementById('daily'), tip = document.getElementById('tip');
+  box.querySelectorAll('svg, .empty').forEach((n) => n.remove());
+  const [a] = range();
+  const first = state.period === 'all' ? Math.min(...sessions.map((s) => s.t), Date.now()) : a;
+  const days = []; const d0 = new Date(first); d0.setHours(0, 0, 0, 0);
+  for (let t = d0.getTime(); t <= Date.now() && days.length < 120; t += 864e5) days.push(dayKey(t));
+  if (state.period === 'yesterday') days.splice(1);
+  const vis = {}, sig = {};
+  sessions.forEach((s) => { const k = dayKey(s.t); (vis[k] || (vis[k] = new Set())).add(s.v); if (s.ok) (sig[k] || (sig[k] = new Set())).add(s.v); });
+  if (!sessions.length) { box.insertAdjacentHTML('beforeend', '<div class="empty">No visits yet for this filter.</div>'); return; }
+  const W = 600, H = 190, pad = { l: 30, r: 6, t: 8, b: 22 };
+  const max = Math.max(1, ...days.map((k) => (vis[k] ? vis[k].size : 0)));
+  const nice = max <= 5 ? max : Math.ceil(max / 5) * 5;
+  const bw = (W - pad.l - pad.r) / days.length, gap = Math.min(2, bw * .15);
+  const y = (n) => pad.t + (H - pad.t - pad.b) * (1 - n / nice);
+  let g = '';
+  [0, nice / 2, nice].forEach((n) => { g += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${y(n)}" y2="${y(n)}" stroke="#efe7da"/><text x="${pad.l - 6}" y="${y(n) + 4}" text-anchor="end" font-size="10.5" fill="#847c70">${Math.round(n)}</text>`; });
+  days.forEach((k, i) => {
+    const v = vis[k] ? vis[k].size : 0, s = sig[k] ? sig[k].size : 0, x = pad.l + i * bw + gap / 2, w = Math.max(1, bw - gap);
+    if (v) g += `<path d="M${x},${y(0)} V${y(v) + Math.min(4, w / 2)} q0,-${Math.min(4, w / 2)} ${Math.min(4, w / 2)},-${Math.min(4, w / 2)} H${x + w - Math.min(4, w / 2)} q${Math.min(4, w / 2)},0 ${Math.min(4, w / 2)},${Math.min(4, w / 2)} V${y(0)} Z" fill="#cfe0d4"/>`;
+    if (s) g += `<rect x="${x + w * .25}" y="${y(s)}" width="${w * .5}" height="${y(0) - y(s)}" fill="#c2410c" rx="${Math.min(3, w * .25)}"/>`;
+    g += `<rect class="hit" data-i="${i}" x="${pad.l + i * bw}" y="${pad.t}" width="${bw}" height="${H - pad.t - pad.b}" fill="transparent"/>`;
+  });
+  const label = (k) => new Date(k + 'T12:00').toLocaleDateString([], { day: 'numeric', month: 'short' });
+  const every = Math.ceil(days.length / 7);
+  days.forEach((k, i) => { if (i % every === 0) g += `<text x="${pad.l + i * bw + bw / 2}" y="${H - 6}" text-anchor="middle" font-size="10.5" fill="#847c70">${label(k)}</text>`; });
+  g += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${y(0)}" y2="${y(0)}" stroke="#d8cdbb"/>`;
+  box.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${g}</svg>`);
+  box.querySelectorAll('.hit').forEach((r) => {
+    r.addEventListener('mousemove', (e) => {
+      const k = days[r.dataset.i], v = vis[k] ? vis[k].size : 0, s = sig[k] ? sig[k].size : 0, bx = box.getBoundingClientRect();
+      tip.style.display = 'block'; tip.style.left = (e.clientX - bx.left) + 'px'; tip.style.top = (e.clientY - bx.top) + 'px';
+      tip.innerHTML = `<b>${label(k)}</b> · ${v} visitor${v === 1 ? '' : 's'} · ${s} signed up`;
+    });
+    r.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+  });
+}
+
+// filters
+const srcs = [...new Set(DATA.sessions.map(sourceOf))].sort();
+document.getElementById('f-src').insertAdjacentHTML('beforeend', srcs.map((s) => `<option>${esc(s)}</option>`).join(''));
+document.getElementById('f-period').addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#f-period button').forEach((x) => x.classList.toggle('on', x === b)); state.period = b.dataset.v; render();
+});
+[['f-page', 'page'], ['f-device', 'device'], ['f-src', 'src']].forEach(([id, k]) => document.getElementById(id).addEventListener('change', (e) => { state[k] = e.target.value; render(); }));
+document.getElementById('upd').innerHTML = `Updated ${new Date(DATA.at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · reload to refresh · <a href="${esc(DATA.sheet)}">Open the Sheet</a>`;
+(() => {
+  const P = DATA.pending || [], el = document.getElementById('alert');
+  if (DATA.writable !== false && !P.length) return;
+  const when = (t) => new Date(t).toLocaleString([], { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  el.innerHTML = `<div class="alert">⚠️ <b>${DATA.readError ? 'Google is blocking your leads Sheet right now' : DATA.writable === false ? 'Your leads Sheet is read-only right now' : 'Leads are waiting to be added'}</b>
+    (usually Google storage is full or a plan lapsed). New signups are kept safely and move into the Sheet by themselves once it works again.
+    ${P.length ? `<div class="scroll"><table><tr><th>When</th><th>Name</th><th>WhatsApp</th><th>Email</th><th>Field</th><th>Help with</th></tr>${P.map((p) => `<tr><td>${when(p.t)}</td><td>${esc(p.n)}</td><td>${esc(p.w)}</td><td>${esc(p.e)}</td><td>${esc(p.f)}</td><td>${esc(p.sv)}</td></tr>`).join('')}</table></div>` : ''}</div>`;
+})();
+render();
+</script>
+</body>
+</html>
